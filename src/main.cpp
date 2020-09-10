@@ -4,7 +4,7 @@
 
 
 
-DigitalOut led(LED3);
+//DigitalOut led(LED3);
 int main() 
 {   
     t.start();                                          //включение библиотеки системного времени (библиотека Times)////tthffgt
@@ -17,11 +17,11 @@ int main()
     
     while(1)
     {
-     LampInit();
+     //LampInit();  ??? из-за этого висло
      //printf("res: %i\n", res);
      //printf("a1 %i\n", a1);
      //printf("DITest: %i\n", );
-     printf("rotateGeneral: %i\n", rotateGeneral);
+     //printf("SecSystem: %i\n", SecSystem);
      //printf("Level: %i\n", LampNumber[0].LampResurs_Set);
      printf("Sec: %i\n", Sec);
 
@@ -34,18 +34,18 @@ int main()
     //led=!led;    
     // LampNumber[0].LampPin=(!LampNumber[0].LampPin);
     // 
-    drebezg_encoder(200000);                               // вызов классов с определенной частотой (200 мс), для избежания дребезга и последовательной обработки кода программы.
-    LevelChoice (200000);
-    Level0 (200000);
-    Level1 (200000);
-    Level2 (200000);
+    drebezg_encoder(100000);                               // вызов классов с определенной частотой (200 мс), для избежания дребезга и последовательной обработки кода программы.
+    LevelChoice (100000);
+    Level0 ();
+    Level1 ();
+    Level2 ();
     LevelOptions();
     
 
     TimerObsh (900000,t);
-    ResursT (200000);    
-    On_OffSystem(200000);
-   // Alarm (200000);
+    ResursT ();    
+    On_OffSystem();
+   // Alarm (200);
     Button();
 
 
