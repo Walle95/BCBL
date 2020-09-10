@@ -46,17 +46,57 @@ TextLCD_I2C lcd(&i2c_lcd, 0x4E, TextLCD_I2C::LCD16x2,TextLCD::HD44780);
 
 const int COUNTLAMP=23; // Колличество ламп 24 в установке (23 т.к. массив начинается с 0)
 
-PinName y[2] = {
+PinName y[23] = {
     PB_0,
-    PB_1
-    
-    };
-
-Lamp LampNumber[2]={ //иницианализация ламп
+    PB_1,
     PB_2,
-    PB_3
+    PB_3,
+    PB_4,
+    PB_5,
+    PB_8,
+    PB_9,
+    PB_10,
+    PB_11,
+    PB_12,
+    PB_13,
+    PB_14,
+    PB_15,
+    PC_0,
+    PC_1,
+    PC_2,
+    PC_3,
+    PC_4,
+    PC_5,
+    PC_6,
+    PC_7,
+    PC_8
+   };
 
-};  // Массив класса ламп (23 т.к. массив начинается с 0)
+Lamp LampNumber[23]= {  
+    PA_0,
+    PA_1,
+    PA_2,
+    PA_3,
+    PA_4,
+    PA_5,
+    PA_8,
+    PA_9,
+    PA_10,
+    PA_11,
+    PA_12,
+    PA_13,
+    PA_14,
+    PA_15,
+    PD_0,
+    PD_1,
+    PD_2,
+    PC_9,
+    PC_10,
+    PC_11,
+    PC_12,
+    PC_14,
+    PC_15  
+};
 
 
 void LampInit()
