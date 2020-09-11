@@ -21,7 +21,7 @@ int main()
      //printf("res: %i\n", res);
      //printf("a1 %i\n", a1);
      //printf("DITest: %i\n", );
-     //printf("SecSystem: %i\n", SecSystem);
+     printf("Button: %s\n", button);
      //printf("Level: %i\n", LampNumber[0].LampResurs_Set);
      printf("Sec: %i\n", Sec);
 

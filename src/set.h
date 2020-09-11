@@ -294,7 +294,7 @@ void drebezg_encoder (int dredezg)
                if (DispLightTime = 0){LightDisp = 0;}   
                BackLight(LightDisp);
 
-               DispLightTime = 10;                                //Через 20 сек дисплей погаснет и вернется на главный экран 
+               DispLightTime = 20;                                //Через 20 сек дисплей погаснет и вернется на главный экран 
         }
             else 
             {
@@ -545,22 +545,17 @@ void Level0()                     //Начальный экран (отобра�
                 {
                     lcd.locate(15,0);
                     lcd.printf(" ");
-                } */
-            
+                } */            
                     
                 lcd.printf("SP_Res:\n");
                 lcd.locate(10, 0);                          
-                lcd.printf("%ih\n", SetPointGeneralResurs);
-
-
-               
+                lcd.printf("%ih\n", SetPointGeneralResurs);           
 
                 lcd.printf("================\n");
                 //lcd.printf("W_Res:\n");                
                 //lcd.locate(10, 1);                          
                 //lcd.printf("%ih\n", LampNumber[0].LampResusr_OSt);
-                
-                lcd.cls();
+
             }
     }
 
