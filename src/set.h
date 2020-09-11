@@ -12,6 +12,7 @@
 #include "RPG/RPG.h"
 #include "Alarm.h"
 #include "GenButton.h"
+#include "myRTC.h"
 
 
 #include  "Lamp.cpp"
@@ -24,12 +25,16 @@ bool ButtonClick;
 Alarm alarm1;
 bool alarm11;
 
+myRTC myrtc;
+
 bool a1 = 0;       //доп. переменные
 bool b1 = 0;
 bool a2 = 0;
 bool b2 = 0;
 
-bool x = 1;     //переменная для постоянного счета времени
+
+
+
 
 
 
@@ -216,10 +221,11 @@ bool TikTime (int TimePrOld, int TimePr)
 //--------------------------------------------------------------------Счетчик времени
 void TimerObsh (int TimerSec,Timer &t)              
 {
-    if (x == 1)                                                    //Условие включения счетчика (планируется активация при включении установки). 
+    if (1)                                                    //Условие включения счетчика (планируется активация при включении установки). 
         {
+            
             SecSystem = (int)t.read();              //Чтение системного вермени. Библиотека "Timer"    
-               // if (SecSystemOld != SecSystem)      //
+                if (SecSystemOld != SecSystem)      //
                 {
                         //------Секунды------//
                     Sec ++; 
@@ -241,9 +247,13 @@ void TimerObsh (int TimerSec,Timer &t)
                         }
                 }   
             SecSystemOld = SecSystem; 
-        }       
+        }   
 }
 //--------------------------------------------------------------------
+
+
+
+
 
 //---------------------------------------------------------------------Подсветка
 
@@ -287,14 +297,19 @@ void drebezg_encoder (int dredezg)
     int    rotateNew=wheel.getPulses();                          //Чтенеие поворотов энкодера. библиотека OEI  
     bool        buttonRPG=wheelRPG.pb();                              //Чтение "кнопочного" сигнала энкодера. библиотека RPG  
         ChangeRotate = (rotateGeneral!=rotateNew) ? true : false;            //Чтение поворота энкодера без проскальзывания
-        if (rotateGeneral!=rotateNew or button)                              //Условие включения подсветки дисплея  
+        if (ChangeRotate or button)                              //Условие включения подсветки дисплея  
         {   
-               if (DispLightTime > 0) {LightDisp = 1;}
-               else
-               if (DispLightTime = 0){LightDisp = 0;}   
+               if (DispLightTime > 0) 
+               {
+                   LightDisp = 1;
+               }
+               else if (DispLightTime = 0)
+               {
+                   LightDisp = 0;
+               }   
                BackLight(LightDisp);
 
-               DispLightTime = 20;                                //Через 20 сек дисплей погаснет и вернется на главный экран 
+               DispLightTime = 15;                                //Через 20 сек дисплей погаснет и вернется на главный экран 
         }
             else 
             {
@@ -317,6 +332,10 @@ void drebezg_encoder (int dredezg)
                     }
                 TimeOldD = Sec;
                 
+            }
+            if (DispLightTime == 0)
+            {
+                LightDisp = 0;
             }          
 
 
@@ -555,6 +574,9 @@ void Level0()                     //Начальный экран (отобра�
                 //lcd.printf("W_Res:\n");                
                 //lcd.locate(10, 1);                          
                 //lcd.printf("%ih\n", LampNumber[0].LampResusr_OSt);
+
+               
+               
 
             }
     }
