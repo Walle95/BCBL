@@ -548,17 +548,18 @@ void Level0()                     //Начальный экран (отобра�
                 } */
             
                     
-                /*lcd.printf("SP_Res:\n");
+                lcd.printf("SP_Res:\n");
                 lcd.locate(10, 0);                          
                 lcd.printf("%ih\n", SetPointGeneralResurs);
 
 
                
 
-                lcd.printf("================\n");*/
+                lcd.printf("================\n");
                 //lcd.printf("W_Res:\n");                
                 //lcd.locate(10, 1);                          
                 //lcd.printf("%ih\n", LampNumber[0].LampResusr_OSt);
+                
                 lcd.cls();
             }
     }
