@@ -10,22 +10,19 @@ int main()
 {   
     t.start();                                          //включение библиотеки системного времени (библиотека Times)////tthffgt
 
-    //lcd.printf("Obsh T: %i\n", Sec);
-    //lcd.printf("Work T: %i\n", Min);
-    //lcd.setCursor(lcd.CurOn_BlkOn); ///Курсор
-    
-    
+    lcd.setCursor(lcd.CurOn_BlkOn); ///Курсор
 
+    
     
     while(1)
     {    
-     //LampInit();  ??? из-за этого висло
+     LampInit();
      printf("DispLightTime: %i\n", DispLightTime);      
      printf("Button: %s\n", button);
      //printf("Level: %i\n", LampNumber[0].LampResurs_Set);
      printf("Sec: %i\n", Sec);
 
-     
+
     
     
 
@@ -46,7 +43,7 @@ int main()
     TimerObsh (900000,t);
     ResursT ();    
     On_OffSystem();
-   // Alarm (200);
+    AlarmStatusSystem();
     Button();
 
 

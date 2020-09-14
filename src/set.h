@@ -22,8 +22,9 @@ GenButton GeneralButton;
 bool ButtonSaveChange;
 bool ButtonClick;
 
-Alarm alarm1;
-bool alarm11;
+Alarm alarm;
+bool alarmStatus;
+
 
 myRTC myrtc;
 
@@ -261,8 +262,7 @@ bool BackLight (bool LightDisp)
 {     
      if (LightDisp)
      {  
-         lcd.setBacklight(lcd.LightOn);
-        alarm11 = alarm1.indicatorAlarmLamp(true);     //индикация аварии (пока подвязал сюда для теста)
+        lcd.setBacklight(lcd.LightOn);        
      }
      else
      {
@@ -312,8 +312,7 @@ void drebezg_encoder (int dredezg)
                DispLightTime = 15;                                //Через 20 сек дисплей погаснет и вернется на главный экран 
         }
             else 
-            {
-                alarm11 = alarm1.indicatorAlarmLamp(false);  
+            {               
                 TikTimeD = TikTime (TimeOldD, Sec);                    //Функция для отчета времени с момента НЕактивности энкодера
                 if (TikTimeD)
                     {
@@ -550,12 +549,20 @@ void LevelOptions(){                         //уровень с настрой�
  }
 
 //////////////////////////////////////////////////////////////////////////////
+void AlarmStatusSystem()
+{
+    for (size_t i = 0; i < COUNTLAMP; i++)
+    {
+        alarmStatus = alarm.indicatorAlarmLamp(true, LampNumber[i].LampResusr_OSt, 30);   
+    }
+}
+    
 
 void Level0()                     //Начальный экран (отображение общего начального ресурса установки, общего оставшегося ресурса)
     {
         if (Level==0)
             {           
-                /*if (alarm11 == 1)
+                if (alarmStatus == 1)
                 {
                     lcd.locate(15,0);
                     lcd.printf("!");           
@@ -564,8 +571,9 @@ void Level0()                     //Начальный экран (отобра�
                 {
                     lcd.locate(15,0);
                     lcd.printf(" ");
-                } */            
-                    
+                }            
+
+                lcd.locate(0,0);  
                 lcd.printf("SP_Res:\n");
                 lcd.locate(10, 0);                          
                 lcd.printf("%ih\n", SetPointGeneralResurs);           
@@ -615,7 +623,7 @@ void Level1()                     //перемещение в 1 уровне. в
                        // lcd.printf("Back\n");
                        // Level1Back = true;
                        LevelOpt = true;                             //Условие возврата, а не перехода на уровень ниже
-                        wheel.setPulses(COUNTLAMP+1);
+                       wheel.setPulses(COUNTLAMP+1);
                           if (ButtonClick)                                    //по нажатию на кнопку происходит переход на уровень выше (0), сброс оборотов энкодера и очистка экрана
                             {   
                                 NMenuL2 = 0;
