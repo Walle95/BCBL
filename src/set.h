@@ -52,31 +52,11 @@ TextLCD_I2C lcd(&i2c_lcd, 0x4E, TextLCD_I2C::LCD16x2,TextLCD::HD44780);
 
 const int COUNTLAMP=23; // Колличество ламп 24 в установке (23 т.к. массив начинается с 0)
 
-PinName y[23] = {
-    PB_0,
-    PB_1,
-    PB_2,
-    PB_3,
-    PB_4,
-    PB_5,
-    PB_8,
-    PB_9,
-    PB_10,
-    PB_11,
-    PB_12,
-    PB_13,
-    PB_14,
-    PB_15,
-    PC_0,
-    PC_1,
-    PC_2,
-    PC_3,
-    PC_4,
-    PC_5,
-    PC_6,
-    PC_7,
-    PC_8
-   };
+
+
+PinName y[23] = {PB_0, PB_0, PB_0, PB_0, PB_0, PB_0, PB_0, PB_0, PB_0, PB_0, PB_0, PB_0, PB_0, PB_0, PB_0, PB_0, PB_0, PB_0, PB_0, PB_0, PB_0, PB_0, PB_0};
+
+
 
 Lamp LampNumber[23]= {  
     PA_0,
@@ -309,7 +289,7 @@ void drebezg_encoder (int dredezg)
                }   
                BackLight(LightDisp);
 
-               DispLightTime = 15;                                //Через 20 сек дисплей погаснет и вернется на главный экран 
+               DispLightTime = 10;                                //Через 20 сек дисплей погаснет и вернется на главный экран 
         }
             else 
             {               

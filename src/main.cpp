@@ -18,7 +18,7 @@ int main()
     {    
      LampInit();
      printf("DispLightTime: %i\n", DispLightTime);      
-     printf("Button: %s\n", button);
+     printf("PB_0: %i\n", DigitalIn(PA_10));
      //printf("Level: %i\n", LampNumber[0].LampResurs_Set);
      printf("Sec: %i\n", Sec);
 
